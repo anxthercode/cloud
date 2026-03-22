@@ -45,9 +45,9 @@ async function run() {
     await page.waitForTimeout(5000);
     results.steps.push('7. Waited 5s');
 
-    // 8. Navigate to /vms/create
+    // 8. Navigate to /instances/create
     await page.goto('http://localhost:5173/instances/create', { waitUntil: 'networkidle' });
-    results.steps.push('8. Navigated to /vms/create');
+    results.steps.push('8. Navigated to /instances/create');
 
     // 9. Wait 3 seconds
     await page.waitForTimeout(3000);
