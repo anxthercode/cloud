@@ -1,8 +1,8 @@
 /* ══ FONTS ══ */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
-  --font: 'Cairo', sans-serif;
+  --font: 'Plus Jakarta Sans', system-ui, sans-serif;
   --navy: #0d1b2a;
   --navy2: #142336;
   --navy3: #1c3050;
@@ -644,3 +644,96 @@ input, select, textarea, button, a {
 .landing-step-num { width:44px; height:44px; border-radius:50%; border:2px solid var(--red); background:white; color:var(--red); display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:900; margin:0 auto 18px; }
 .landing-step-title { font-size: 17px; font-weight: 800; margin-bottom: 10px; }
 .landing-step-desc { font-size: 14px; color: var(--text2); line-height: 1.7; font-weight: 400; }
+
+/* ══ CONSOLE: premium dark (Railway-adjacent) ══ */
+.app-shell {
+  --bg: #060708;
+  --bg2: #0b0d12;
+  --card: #0f1218;
+  --border: rgba(255, 255, 255, 0.07);
+  --border2: rgba(255, 255, 255, 0.14);
+  --text: #eceef2;
+  --text2: #98a2b3;
+  --text3: #6b7280;
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 20px 50px rgba(0, 0, 0, 0.45);
+  --shadow2: 0 24px 64px rgba(0, 0, 0, 0.55);
+}
+.app-shell .main-content { background: var(--bg); color: var(--text); }
+.app-shell .page-content { color: var(--text); }
+.app-shell .topnav {
+  background: rgba(11, 13, 18, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--border);
+  box-shadow: none;
+}
+.app-shell .topnav-logo-text { color: var(--text); }
+.app-shell .topnav-item { color: var(--text2); }
+.app-shell .topnav-item:hover { color: var(--text); background: rgba(255, 255, 255, 0.04); }
+.app-shell .topnav-item.active { color: #fff; background: rgba(232, 0, 45, 0.14); }
+.app-shell .topnav-user { border-color: var(--border); background: rgba(255, 255, 255, 0.02); }
+.app-shell .topnav-user-name { color: var(--text); }
+.app-shell .topnav-logout-btn { border-color: var(--border); color: var(--text2); }
+.app-shell .page-header {
+  background: var(--bg2);
+  border-bottom-color: var(--border);
+}
+.app-shell .page-header-left .page-title { color: var(--text); }
+.app-shell .card,
+.app-shell .table-wrap,
+.app-shell .stat-card {
+  background: var(--card);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+}
+.app-shell .card-header { border-bottom-color: var(--border); }
+.app-shell .data-table th {
+  background: var(--bg2);
+  color: var(--text3);
+  border-bottom-color: var(--border);
+}
+.app-shell .data-table td { border-bottom-color: var(--border); color: var(--text2); }
+.app-shell .data-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+.app-shell .table-top { border-bottom-color: var(--border); }
+.app-shell .table-title { color: var(--text); }
+.app-shell .btn-ghost {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text2);
+  border-color: var(--border);
+}
+.app-shell .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border-color: var(--border2);
+}
+.app-shell .field input,
+.app-shell .field select,
+.app-shell .field textarea {
+  background: var(--bg2);
+  border-color: var(--border);
+  color: var(--text);
+}
+.app-shell .flavor-card {
+  background: var(--bg2);
+  border-color: var(--border);
+}
+.app-shell .flavor-card:hover { border-color: rgba(77, 142, 247, 0.45); background: rgba(77, 142, 247, 0.06); }
+.app-shell .flavor-card.selected { border-color: var(--blue); background: rgba(29, 110, 245, 0.12); }
+.app-shell .s-active { background: rgba(34, 197, 94, 0.14); color: #4ade80; }
+.app-shell .s-active .dot { background: #22c55e; }
+.app-shell .s-stopped { background: rgba(148, 163, 184, 0.12); color: #cbd5e1; }
+.app-shell .s-stopped .dot { background: #94a3b8; }
+.app-shell .s-creating { background: rgba(59, 130, 246, 0.14); color: #93c5fd; }
+.app-shell .s-creating .dot { background: #3b82f6; }
+.app-shell .s-provisioning { background: rgba(139, 92, 246, 0.14); color: #c4b5fd; }
+.app-shell .s-error { background: rgba(239, 68, 68, 0.14); color: #fca5a5; }
+.app-shell .s-suspended { background: rgba(245, 158, 11, 0.14); color: #fcd34d; }
+.app-shell .modal-header,
+.app-shell .modal-footer { background: var(--bg2); }
+.app-shell .modal { background: var(--card); border: 1px solid var(--border); }
+.app-shell .audit-row:hover { background: rgba(255, 255, 255, 0.03); }
+.app-shell .audit-action { color: var(--text2); }
+.app-shell .chip { background: var(--bg2); border-color: var(--border); color: var(--text2); }
+.app-shell .topnav-role-badge.rb-admin { background: rgba(232, 0, 45, 0.12); color: #fb7185; border-color: rgba(232, 0, 45, 0.25); }
+.app-shell .topnav-role-badge.rb-tenant-admin { background: rgba(59, 130, 246, 0.12); color: #93c5fd; border-color: rgba(59, 130, 246, 0.25); }
+.app-shell .topnav-role-badge.rb-tenant-user { background: rgba(34, 197, 94, 0.12); color: #86efac; border-color: rgba(34, 197, 94, 0.25); }
