@@ -46,7 +46,7 @@ async function run() {
     results.steps.push('7. Waited 5s');
 
     // 8. Navigate to /vms/create
-    await page.goto('http://localhost:5173/vms/create', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:5173/instances/create', { waitUntil: 'networkidle' });
     results.steps.push('8. Navigated to /vms/create');
 
     // 9. Wait 3 seconds
@@ -72,7 +72,7 @@ async function run() {
 
     // Determine result
     results.url = page.url();
-    results.redirectedToVMList = results.url.includes('/vms') && !results.url.includes('/create');
+    results.redirectedToVMList = results.url.includes('/instances') && !results.url.includes('/create');
 
     const errBox = page.locator('.err-box');
     const hasError = await errBox.count() > 0;
