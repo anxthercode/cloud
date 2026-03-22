@@ -7,7 +7,7 @@ export default function NetworkPage() {
 
   return (
     <div>
-      <Topbar title="Сеть и Firewall" breadcrumb="// network.config">
+      <Topbar title="Сеть" breadcrumb="// network">
         <button className="btn btn-primary" onClick={addFWRule}>+ Добавить правило</button>
       </Topbar>
       <div className="page-content">

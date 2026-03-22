@@ -28,7 +28,7 @@ export default function TenantsPage() {
 
   return (
     <div>
-      <Topbar title="Управление тенантами">
+      <Topbar title="Workspaces">
         <button className="btn btn-primary" style={{ fontSize: 15, padding: '10px 22px' }} onClick={() => setShowCreate(true)}>
           + Создать тенант
         </button>

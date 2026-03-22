@@ -15,7 +15,7 @@ export default function UsersPage() {
 
   return (
     <div>
-      <Topbar title="Пользователи">
+      <Topbar title="Команда">
         {canManage && <button className="btn btn-primary" style={{ fontSize: 15, padding: '10px 22px' }} onClick={() => setShowInvite(true)}>+ Пригласить</button>}
       </Topbar>
       <div className="page-content">

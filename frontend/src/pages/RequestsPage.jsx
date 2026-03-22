@@ -27,7 +27,7 @@ export default function RequestsPage() {
 
   return (
     <div>
-      <Topbar title="Заявки на регистрацию" />
+      <Topbar title="Запросы доступа" />
       <div className="page-content">
 
         {/* Tab bar — contains the counts, no need for separate stat cards */}

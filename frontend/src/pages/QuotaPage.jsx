@@ -76,7 +76,7 @@ export default function QuotaPage() {
 
   return (
     <div>
-      <Topbar title="Квота ресурсов" />
+      <Topbar title="Использование" />
       <div className="page-content">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, maxWidth: 900, margin: '0 auto' }}>
           {resources.map(r => (

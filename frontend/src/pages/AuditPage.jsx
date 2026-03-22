@@ -17,7 +17,7 @@ export default function AuditPage() {
 
   return (
     <div>
-      <Topbar title="Аудит">
+      <Topbar title="События">
         <button className="btn btn-ghost btn-sm" onClick={() => {
           const csv = 'time,actor,action\n' + auditLog.map(e => `${e.time},${e.actor},"${e.action}"`).join('\n');
           const a = document.createElement('a');
