@@ -165,7 +165,7 @@ export default function Dashboard() {
                 </div>
               );
             })}
-            <button className="btn btn-ghost btn-sm" style={{ marginTop: 4, width: '100%' }} onClick={() => navigate('/tenants')}>
+            <button className="btn btn-ghost btn-sm" style={{ marginTop: 4, width: '100%' }} onClick={() => navigate('/platform/workspaces')}>
               Управление тенантами →
             </button>
           </div>
@@ -175,7 +175,7 @@ export default function Dashboard() {
         <div style={{ background: '#fff', borderRadius: 14, padding: '22px 24px', boxShadow: '0 2px 10px rgba(0,0,0,0.06)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
             <span style={{ fontWeight: 800, fontSize: 15 }}>Последние события</span>
-            <button className="btn btn-ghost btn-sm" onClick={() => navigate('/audit')}>Аудит →</button>
+            <button className="btn btn-ghost btn-sm" onClick={() => navigate('/platform/audit')}>Аудит →</button>
           </div>
           {auditLog.slice(0, 6).map((e, i) => (
             <div key={i} className="audit-row" style={{ fontSize: 14 }}>
