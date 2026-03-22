@@ -1,34 +1,38 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 
-const NAV_PROVIDER = [
-  { to: '/tenants',        label: 'Тенанты' },
-  { to: '/infrastructure', label: 'Инфраструктура' },
-  { to: '/tasks',          label: 'Proxmox Tasks' },
-  { to: '/analytics',      label: 'AI Анализ' },
-  { to: '/audit',          label: 'Аудит' },
-  { to: '/requests',       label: 'Заявки', badge: true },
+/** Provider / control-plane — отдельная ментальная модель от customer app */
+const NAV_PLATFORM = [
+  { to: '/platform/workspaces', label: 'Workspaces' },
+  { to: '/platform/infrastructure', label: 'Инфраструктура' },
+  { to: '/platform/tasks', label: 'Задачи Proxmox' },
+  { to: '/platform/analytics', label: 'Аналитика' },
+  { to: '/platform/audit', label: 'Аудит' },
+  { to: '/platform/access-requests', label: 'Запросы доступа', badge: true },
 ];
 
-// Tenant Admin: no Dashboard (redirects to /vms anyway), only real pages
-const NAV_TENANT_ADMIN = [
-  { to: '/vms',        label: 'Виртуальные машины' },
-  { to: '/quota',      label: 'Квота' },
-  { to: '/users',      label: 'Пользователи' },
-  { to: '/requests',   label: 'Заявки', badge: true },
-  { to: '/audit',      label: 'Аудит' },
-  { to: '/monitoring', label: 'Мониторинг' },
+const NAV_WORKSPACE_ADMIN = [
+  { to: '/overview', label: 'Обзор' },
+  { to: '/instances', label: 'Инстансы' },
+  { to: '/networking', label: 'Сеть' },
+  { to: '/usage', label: 'Использование' },
+  { to: '/team', label: 'Команда' },
+  { to: '/monitoring', label: 'Наблюдаемость' },
+  { to: '/activity', label: 'События' },
+  { to: '/access-requests', label: 'Запросы', badge: true },
 ];
 
-const NAV_TENANT_USER = [
-  { to: '/vms',   label: 'Виртуальные машины' },
-  { to: '/quota', label: 'Моя квота' },
+const NAV_MEMBER = [
+  { to: '/overview', label: 'Обзор' },
+  { to: '/instances', label: 'Инстансы' },
+  { to: '/networking', label: 'Сеть' },
+  { to: '/usage', label: 'Использование' },
 ];
 
 const ROLE_META = {
-  'provider-admin': { label: 'Provider Admin', cls: 'rb-admin',       name: 'Cloud IaaS Admin', email: 'admin@iaas.local',     color: '#e63946' },
-  'tenant-admin':   { label: 'Tenant Admin',   cls: 'rb-tenant-admin', name: 'Алексей Козлов',  email: 'aleksei@acme.com', color: '#3b82f6' },
-  'tenant-user':    { label: 'Tenant User',    cls: 'rb-tenant-user',  name: 'Мария Иванова',   email: 'maria@acme.com',   color: '#22c55e' },
+  'provider-admin': { label: 'Платформа', cls: 'rb-admin', name: 'Cloud IaaS Admin', email: 'admin@iaas.local', color: '#e63946' },
+  'tenant-admin': { label: 'Админ workspace', cls: 'rb-tenant-admin', name: 'Алексей Козлов', email: 'aleksei@acme.com', color: '#3b82f6' },
+  'tenant-user': { label: 'Участник', cls: 'rb-tenant-user', name: 'Мария Иванова', email: 'maria@acme.com', color: '#22c55e' },
 };
 
 function BrandLogo() {
@@ -56,11 +60,11 @@ export default function Topnav() {
     name: user.full_name || user.email?.split('@')[0] || baseMeta.name,
     email: user.email || baseMeta.email,
   } : baseMeta;
-  const navItems = role === 'provider-admin' ? NAV_PROVIDER
-    : role === 'tenant-admin' ? NAV_TENANT_ADMIN
-    : NAV_TENANT_USER;
+  const navItems = role === 'provider-admin' ? NAV_PLATFORM
+    : role === 'tenant-admin' ? NAV_WORKSPACE_ADMIN
+    : NAV_MEMBER;
   const handleLogout = () => { logout(); navigate('/login'); };
-  const logoTo = role === 'provider-admin' ? '/tenants' : '/vms';
+  const logoTo = role === 'provider-admin' ? '/platform/workspaces' : '/overview';
 
   return (
     <>
@@ -68,7 +72,7 @@ export default function Topnav() {
         <div className="support-banner">
           <div className="support-banner-left">
             <span className="support-badge">⚡ SUPPORT MODE</span>
-            <span>Вы работаете в тенанте: <strong>{supportTenant}</strong></span>
+            <span>Вы в workspace: <strong>{supportTenant}</strong></span>
           </div>
           <button
             className="btn btn-sm"

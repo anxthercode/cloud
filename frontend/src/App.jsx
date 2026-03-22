@@ -6,6 +6,7 @@ import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ForcePwPage from './pages/ForcePwPage';
+import OverviewPage from './pages/OverviewPage';
 import VMList from './pages/VMList';
 import CreateVMPage from './pages/CreateVMPage';
 import TenantsPage from './pages/TenantsPage';
@@ -36,10 +37,11 @@ function Guard({ children }) {
     return (
       <div style={{
         display: 'flex', justifyContent: 'center', alignItems: 'center',
-        height: '100vh', fontSize: 16, color: '#64748b', flexDirection: 'column', gap: 12,
+        height: '100vh', fontSize: 16, color: '#94a3b2', flexDirection: 'column', gap: 12,
+        background: '#060708',
       }}>
-        <div style={{ fontSize: 32 }}>MTC</div>
-        <div>Loading...</div>
+        <div style={{ fontSize: 28, fontWeight: 800, color: '#eceef2' }}>Cloud IaaS</div>
+        <div>Загрузка…</div>
       </div>
     );
   }
@@ -57,43 +59,71 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/force-pw" element={<ForcePwPage />} />
 
-        <Route path="/dashboard" element={<Navigate to="/vms" replace />} />
-        <Route path="/vms" element={
+        <Route path="/dashboard" element={<Navigate to="/overview" replace />} />
+
+        <Route path="/overview" element={
+          <Guard><AppLayout><OverviewPage /></AppLayout></Guard>
+        } />
+
+        <Route path="/instances" element={
           <Guard><AppLayout><VMList /></AppLayout></Guard>
         } />
-        <Route path="/vms/create" element={
+        <Route path="/instances/create" element={
           <Guard><AppLayout><CreateVMPage /></AppLayout></Guard>
         } />
-        <Route path="/tenants" element={
-          <Guard><AppLayout><TenantsPage /></AppLayout></Guard>
-        } />
-        <Route path="/users" element={
-          <Guard><AppLayout><UsersPage /></AppLayout></Guard>
-        } />
-        <Route path="/network" element={
+
+        <Route path="/networking" element={
           <Guard><AppLayout><NetworkPage /></AppLayout></Guard>
         } />
-        <Route path="/quota" element={
+        <Route path="/usage" element={
           <Guard><AppLayout><QuotaPage /></AppLayout></Guard>
         } />
-        <Route path="/audit" element={
+        <Route path="/team" element={
+          <Guard><AppLayout><UsersPage /></AppLayout></Guard>
+        } />
+        <Route path="/activity" element={
           <Guard><AppLayout><AuditPage /></AppLayout></Guard>
         } />
+
+        <Route path="/platform/workspaces" element={
+          <Guard><AppLayout><TenantsPage /></AppLayout></Guard>
+        } />
+        <Route path="/platform/infrastructure" element={
+          <Guard><AppLayout><InfrastructurePage /></AppLayout></Guard>
+        } />
+        <Route path="/platform/tasks" element={
+          <Guard><AppLayout><TasksPage /></AppLayout></Guard>
+        } />
+        <Route path="/platform/analytics" element={
+          <Guard><AppLayout><AnalyticsPage /></AppLayout></Guard>
+        } />
+        <Route path="/platform/audit" element={
+          <Guard><AppLayout><AuditPage /></AppLayout></Guard>
+        } />
+        <Route path="/platform/access-requests" element={
+          <Guard><AppLayout><RequestsPage /></AppLayout></Guard>
+        } />
+
         <Route path="/monitoring" element={
           <Guard><AppLayout><MonitoringPage /></AppLayout></Guard>
         } />
-        <Route path="/infrastructure" element={
-          <Guard><AppLayout><InfrastructurePage /></AppLayout></Guard>
-        } />
-        <Route path="/analytics" element={
-          <Guard><AppLayout><AnalyticsPage /></AppLayout></Guard>
-        } />
-        <Route path="/requests" element={
+        <Route path="/access-requests" element={
           <Guard><AppLayout><RequestsPage /></AppLayout></Guard>
         } />
-        <Route path="/tasks" element={
-          <Guard><AppLayout><TasksPage /></AppLayout></Guard>
-        } />
+
+        {/* Legacy paths → redirects */}
+        <Route path="/vms" element={<Navigate to="/instances" replace />} />
+        <Route path="/vms/create" element={<Navigate to="/instances/create" replace />} />
+        <Route path="/network" element={<Navigate to="/networking" replace />} />
+        <Route path="/quota" element={<Navigate to="/usage" replace />} />
+        <Route path="/users" element={<Navigate to="/team" replace />} />
+        <Route path="/audit" element={<Navigate to="/activity" replace />} />
+        <Route path="/requests" element={<Navigate to="/access-requests" replace />} />
+        <Route path="/tenants" element={<Navigate to="/platform/workspaces" replace />} />
+        <Route path="/infrastructure" element={<Navigate to="/platform/infrastructure" replace />} />
+        <Route path="/tasks" element={<Navigate to="/platform/tasks" replace />} />
+        <Route path="/analytics" element={<Navigate to="/platform/analytics" replace />} />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

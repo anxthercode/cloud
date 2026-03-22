@@ -22,8 +22,8 @@ export default function VMList() {
 
   return (
     <div>
-      <Topbar title="Виртуальные машины">
-        {canCreate && <button className="btn btn-primary" style={{ fontSize: 15, padding: '10px 22px' }} onClick={() => navigate('/vms/create')}>+ Создать ВМ</button>}
+      <Topbar title="Инстансы">
+        {canCreate && <button className="btn btn-primary" style={{ fontSize: 15, padding: '10px 22px' }} onClick={() => navigate('/instances/create')}>+ Создать инстанс</button>}
       </Topbar>
       <div className="page-content">
         <div className="table-wrap">
@@ -44,8 +44,8 @@ export default function VMList() {
           {filtered.length === 0 ? (
             <div className="empty-state">
               <div className="empty-state-icon">🖥️</div>
-              <div className="empty-state-title" style={{ fontSize: 18 }}>{vms.length === 0 ? 'Нет виртуальных машин' : 'Ничего не найдено'}</div>
-              <div className="empty-state-sub">{vms.length === 0 ? 'Создайте первую ВМ с помощью кнопки выше' : 'Попробуйте изменить параметры поиска'}</div>
+              <div className="empty-state-title" style={{ fontSize: 18 }}>{vms.length === 0 ? 'Нет инстансов' : 'Ничего не найдено'}</div>
+              <div className="empty-state-sub">{vms.length === 0 ? 'Создайте первый инстанс кнопкой выше' : 'Попробуйте изменить параметры поиска'}</div>
             </div>
           ) : (
             <table className="data-table" style={{ fontSize: 14 }}>

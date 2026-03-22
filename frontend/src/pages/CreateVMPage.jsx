@@ -68,7 +68,7 @@ export default function CreateVMPage() {
     });
     setLoading(false);
     if (result.error) { setError(result.error); return; }
-    navigate('/vms');
+    navigate('/instances');
   };
 
   const idKey = Math.random().toString(36).slice(2, 10);
@@ -171,7 +171,7 @@ export default function CreateVMPage() {
             {error && <div className="err-box" style={{ marginBottom: 16 }}><span>⚠</span> {error}</div>}
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, paddingTop: 8, borderTop: '1px solid var(--border)' }}>
-              <button type="button" className="btn btn-ghost" onClick={() => navigate('/vms')}>Отмена</button>
+              <button type="button" className="btn btn-ghost" onClick={() => navigate('/instances')}>Отмена</button>
               <button type="submit" className="btn btn-primary" disabled={loading} style={{ fontSize: 15, padding: '10px 28px' }}>
                 {loading ? <span className="spin">◌</span> : 'Создать ВМ'}
               </button>
