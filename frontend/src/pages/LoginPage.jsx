@@ -27,9 +27,9 @@ const BrandLogo = ({ size = 36 }) => (
 );
 
 const ROLES = [
-  { id: 'provider-admin', icon: '🏢', name: 'Provider Admin', desc: 'IaaS платформа · полный доступ к инфраструктуре и управлению тенантами', color: '#e8002d', email: 'admin@iaas.local', pw: 'admin123' },
-  { id: 'tenant-admin',   icon: '🔑', name: 'Tenant Admin',   desc: 'ACME Corp · управление ВМ, пользователями, квотами', color: '#1d6ef5', email: 'aleksei@acme.com', pw: 'user123' },
-  { id: 'tenant-user',    icon: '👤', name: 'Tenant User',    desc: 'ACME Corp · запуск ВМ, просмотр ресурсов', color: '#0d9c6e', email: 'maria@acme.com', pw: 'user123' },
+  { id: 'provider-admin', icon: '🏢', name: 'Админ платформы', desc: 'Control plane · инфраструктура, workspaces, внутренние инструменты', color: '#e8002d', email: 'admin@iaas.local', pw: 'admin123' },
+  { id: 'tenant-admin',   icon: '🔑', name: 'Админ workspace', desc: 'ACME Corp · инстансы, команда, сеть, использование', color: '#1d6ef5', email: 'aleksei@acme.com', pw: 'user123' },
+  { id: 'tenant-user',    icon: '👤', name: 'Участник', desc: 'ACME Corp · инстансы и сеть в рамках workspace', color: '#0d9c6e', email: 'maria@acme.com', pw: 'user123' },
 ];
 
 export default function LoginPage() {
@@ -42,7 +42,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [showPw, setShowPw] = useState(false);
 
-  if (role) return <Navigate to="/vms" replace />;
+  if (role) return <Navigate to={role === 'provider-admin' ? '/platform/workspaces' : '/overview'} replace />;
 
   const handleSelectRole = (r) => {
     setSelected(r.id);
@@ -61,7 +61,7 @@ export default function LoginPage() {
       if (me.must_change_password) {
         navigate('/force-pw');
       } else {
-        navigate('/vms');
+        navigate(me.is_staff ? '/platform/workspaces' : '/overview');
       }
     } catch (err) {
       const detail = err.response?.data?.detail || err.response?.data?.error;

@@ -39,7 +39,7 @@ export default function Dashboard() {
 
   if (role !== 'provider-admin') {
     // Tenant dashboard redirect
-    navigate('/vms');
+    navigate('/overview');
     return null;
   }
 

@@ -27,7 +27,7 @@ export default function ForcePwPage() {
     if (pw.length < 8) { setError('Пароль должен содержать минимум 8 символов'); return; }
     if (pw !== pw2) { setError('Пароли не совпадают'); return; }
     showToast('success', 'Пароль изменён', 'Вы будете перенаправлены на главную страницу');
-    setTimeout(() => navigate('/vms'), 1000);
+    setTimeout(() => navigate('/overview'), 1000);
   };
 
   return (

@@ -15,7 +15,7 @@ export default function SupportSessionModal({ open, onClose }) {
     const { session, tenantId, tenantName } = createSupportSession(form);
     enterSupportMode(tenantId, tenantName, form.scope);
     onClose();
-    navigate('/vms');
+    navigate('/instances');
   };
 
   return (

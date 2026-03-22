@@ -75,8 +75,8 @@ export default function CreateVMPage() {
 
   return (
     <div>
-      <Topbar title="Создание виртуальной машины">
-        <button className="btn btn-ghost" style={{ fontSize: 14 }} onClick={() => navigate('/vms')}>← Назад к списку</button>
+      <Topbar title="Новый инстанс">
+        <button className="btn btn-ghost" style={{ fontSize: 14 }} onClick={() => navigate('/instances')}>← К инстансам</button>
       </Topbar>
 
       <div className="page-content">
