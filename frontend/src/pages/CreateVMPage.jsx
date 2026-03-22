@@ -82,13 +82,13 @@ export default function CreateVMPage() {
       <div className="page-content">
         <form onSubmit={handleSubmit} style={{ maxWidth: 860, margin: '0 auto' }}>
           <div className="table-wrap" style={{ padding: 28 }}>
-            <div style={{ fontSize: 13, color: '#9ca3af', marginBottom: 20, fontFamily: 'monospace' }}>
+            <div style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 20, fontFamily: 'JetBrains Mono, monospace' }}>
               Создание через асинхронную очередь задач · Idempotency-Key: idem-{idKey}
             </div>
 
             <div className="form-grid form-2col">
               <div className="field">
-                <label style={{ fontSize: 14, fontWeight: 700 }}>Имя ВМ *</label>
+                <label style={{ fontSize: 14, fontWeight: 700 }}>Имя инстанса *</label>
                 <input value={name} onChange={e => setName(e.target.value)} placeholder="web-server-01"
                   style={{ fontSize: 15, padding: '10px 14px' }} />
                 <div className="field-hint">строчные буквы, цифры и дефис</div>
@@ -107,8 +107,8 @@ export default function CreateVMPage() {
               </select>
             </div>
 
-            <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 12, padding: 20, marginBottom: 16 }}>
-              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 16, color: '#374151' }}>⚙️ Ресурсы виртуальной машины</div>
+            <div style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 12, padding: 20, marginBottom: 16 }}>
+              <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 16, color: 'var(--text)' }}>⚙️ Ресурсы инстанса</div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
                 <div className="field" style={{ margin: 0 }}>
                   <label style={{ fontSize: 13, fontWeight: 600 }}>vCPU (ядра)</label>
